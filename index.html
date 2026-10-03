@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="Portfolio and resume">
+  <link rel="icon" href="assets/favicon.png">
+  <!-- Fonts: Fraunces (retro serif headings), Montserrat (body), Permanent Marker (hand-drawn accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,100,1&family=Montserrat:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Reusable 4-point sparkle star. Used anywhere as <svg class="spark"><use href="#spark"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="0 0 100 100">
+    <path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/>
+  </symbol>
+</svg>
+
+<div class="progress" id="progress"></div>   <!-- orange scroll-progress bar at the top -->
+<div class="cursor" id="cursor"></div>       <!-- custom cursor dot (desktop only) -->
+
+<!-- ================= NAVBAR ================= -->
+<header class="nav" id="nav">
+  <a href="#top" class="logo"><svg class="spark"><use href="#spark"/></svg><span data-bind="fullName"></span></a>
+  <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
+  <nav class="links" id="links">
+    <a href="#about">About me</a>
+    <a href="#resume">Resume</a>
+    <a href="#projects">Work</a>
+    <a href="#events">Events</a>
+    <a href="#certs">Certificates</a>
+    <a href="#contact" class="btn-pill">Get in touch!</a>
+  </nav>
+</header>
+
+<main>
+<!-- ================= 1. HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-band"></div>
+  <svg class="spark hs hs1 float"><use href="#spark"/></svg>
+  <svg class="spark hs hs2 float slow d2"><use href="#spark"/></svg>
+  <svg class="spark hs hs3 float d3"><use href="#spark"/></svg>
+
+  <h1 class="hero-title" id="heroTitle" aria-label="Portfolio"></h1>
+
+  <div class="hero-stage">
+    <div class="hero-photo ph" data-ph="assets/hero.jpg">
+      <img src="assets/hero.jpg" alt="Portrait" onerror="this.remove()">
+      <p class="hero-quote" data-bind="heroQuote"></p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-outline" data-speed="0.12" aria-hidden="true">
+        <span>PORTFOLIO</span><span>PORTFOLIO</span><span>PORTFOLIO</span>
+      </div>
+      <ul class="hero-socials" id="heroSocials"></ul>
+      <!-- "Open to work" badge, filled from DATA.availability -->
+      <a href="#contact" class="otw" id="heroOtw"></a>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-btn">Scroll<br>down</a>
+</section>
+
+<!-- ================= 2. MARQUEE STRIP ================= -->
+<div class="marquee"><div class="track" id="marquee"></div></div>
+
+<!-- ================= 3. ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-text" data-stagger>
+      <p class="kicker reveal">about me ~</p>
+      <h2 class="hello reveal">Hello,<br>I’m <span data-bind="firstName"></span>!</h2>
+      <p class="reveal" data-bind="about"></p>
+      <div class="about-btns reveal">
+        <a class="link-pill" id="linkedinPill" target="_blank" rel="noopener"></a>
+        <a class="ghost-btn" id="cvBtn" download>Download CV ↓</a>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <div class="portrait ph reveal zoom" data-ph="assets/portrait.png">
+        <div class="circle"></div>
+        <img src="assets/portrait.png" alt="Portrait" onerror="this.remove()">
+      </div>
+      <span class="pill-float pf1 float" data-bind="age"></span>
+      <span class="pill-float pf2 float slow d2" data-bind="nationality"></span>
+      <div class="contact-card reveal">
+        <h3>Contact</h3>
+        <ul id="contactList"></ul>
+      </div>
+      <div class="resume-ghost" data-speed="-0.15" aria-hidden="true">
+        <span>RESUME</span><span>RESUME</span><span>RESUME</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. RESUME ================= -->
+<section class="resume" id="resume">
+  <div class="wrap">
+    <div>
+      <h2 class="sec-title reveal left">Education</h2>
+      <ul class="timeline draw" id="eduList" data-stagger></ul>
+
+      <div class="exp-card reveal rot">
+        <h2 class="sec-title">Experience</h2>
+        <ul class="timeline draw" id="expList" data-stagger></ul>
+        <div class="tags" id="traits"></div>
+      </div>
+    </div>
+
+    <div class="skills">
+      <h2 class="sec-title reveal right">Technical skills</h2>
+      <div class="skills-cols">
+        <div>
+          <h3 class="reveal">Tools &amp; Tech</h3>
+          <div class="tool-grid" id="tools" data-stagger></div>
+        </div>
+        <div>
+          <h3 class="reveal">Also know</h3>
+          <ul class="knowledge reveal" id="knowledge"></ul>
+        </div>
+      </div>
+      <h3 class="reveal">Focus areas</h3>
+      <div class="tags" id="areas" data-stagger></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. PROJECTS ================= -->
+<section class="projects" id="projects">
+  <div class="deco deco1 float slow"><img src="assets/deco/deco-1.png" alt="" onerror="this.remove()"></div>
+  <div class="deco deco2 float d2"><img src="assets/deco/deco-2.png" alt="" onerror="this.remove()"></div>
+  <div class="wrap">
+    <div class="proj-head">
+      <div>
+        <p class="kicker reveal">things I built ~</p>
+        <h2 class="sec-title reveal">Selected <span class="outline-text">work</span></h2>
+      </div>
+      <div class="filters reveal" id="filters"></div>
+    </div>
+    <div class="proj-grid" id="projGrid" data-stagger></div>
+  </div>
+</section>
+
+<!-- ================= 6. EVENTS I ORGANISED (polaroid cards) ================= -->
+<section class="events" id="events">
+  <svg class="spark es es1 float"><use href="#spark"/></svg>
+  <svg class="spark es es2 float slow d2"><use href="#spark"/></svg>
+  <div class="wrap">
+    <p class="kicker reveal">behind the scenes ~</p>
+    <h2 class="sec-title reveal">Events I organised</h2>
+    <div class="event-grid" id="eventGrid" data-stagger></div>
+  </div>
+</section>
+
+<!-- ================= 7. CERTIFICATES + WORKSHOPS ================= -->
+<section class="certs" id="certs">
+  <div class="wrap">
+    <p class="kicker reveal">proof of learning ~</p>
+    <h2 class="sec-title reveal">Certificates</h2>
+    <div class="cert-grid" id="certGrid" data-stagger></div>
+
+    <div class="split">
+      <div>
+        <h2 class="sec-title reveal left">Workshops &amp; Activities</h2>
+        <ul class="timeline dark draw" id="workList" data-stagger></ul>
+      </div>
+      <div>
+        <h2 class="sec-title reveal right">Languages</h2>
+        <div class="langs" id="langs" data-stagger></div>
+        <h2 class="sec-title reveal right" style="margin-top:60px">Hobbies &amp; Interests</h2>
+        <div class="hobbies" id="hobbies" data-stagger></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. CONTACT / FOOTER ================= -->
+<section class="contact" id="contact">
+  <svg class="spark cs cs1 float"><use href="#spark"/></svg>
+  <svg class="spark cs cs2 float slow d2"><use href="#spark"/></svg>
+  <div class="wrap">
+    <h2 class="reveal">Let’s build<br><em>something</em> together.</h2>
+    <p class="avail reveal" id="contactAvail"></p>
+    <a class="big-btn magnetic reveal" id="emailBtn">Say hello ✦</a>
+    <p class="fun reveal" data-bind="funFact"></p>
+    <footer class="foot">
+      <span>© <span id="year"></span> <span data-bind="fullName"></span></span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </div>
+</section>
+</main>
+
+<!-- data.js MUST load before script.js -->
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
