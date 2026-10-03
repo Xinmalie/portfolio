@@ -256,6 +256,5 @@ const DATA = {
     { emoji: "🎬", label: "2D animation",     image: "assets/icons/animation.png" },
   ],
 
-  // ---------- CONTACT ----------
-  funFact: "Fun fact: I can tell you your VPN is down in five different languages.",
+
 };
